@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Courier New', monospace;
+    background:
+      radial-gradient(circle at 50% 0%, #161630 0%, #06060a 60%),
+      #06060a;
+    color: #f4f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  /* starfield */
+  .stars { position: absolute; inset: 0; }
+  .stars div {
+    position: absolute; width: 3px; height: 3px;
+    background: #5ad2ff; border-radius: 0;
+  }
+  /* grid floor */
+  .floor {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 38%;
+    background: linear-gradient(to bottom, transparent, rgba(90,210,255,0.04));
+    border-top: 2px solid rgba(90,210,255,0.15);
+  }
+  .floor::before, .floor::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(90,210,255,0.10) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(90,210,255,0.08) 1px, transparent 1px);
+    background-size: 60px 100%, 100% 40px;
+  }
+  .badge {
+    font-size: 16px; letter-spacing: 4px; color: #ffd166;
+    background: rgba(255,209,102,0.08);
+    border: 2px solid rgba(255,209,102,0.4);
+    padding: 8px 20px; margin-bottom: 26px;
+  }
+  .title {
+    font-size: 86px; font-weight: bold; letter-spacing: 4px;
+    color: #5ad2ff;
+    text-shadow: 0 0 24px rgba(90,210,255,0.5), 6px 6px 0 #0a3a52;
+    line-height: 1;
+  }
+  .title .dot { color: #ff7ad9; }
+  .arcade {
+    font-size: 44px; letter-spacing: 28px; color: #ff7ad9;
+    text-shadow: 0 0 18px rgba(255,122,217,0.5);
+    margin-top: 14px; padding-left: 28px;
+  }
+  .tagline {
+    font-size: 22px; color: #f4f4f8; opacity: 0.85;
+    margin-top: 30px; letter-spacing: 1px;
+  }
+  .role {
+    font-size: 18px; color: #7CFC8A; margin-top: 12px; letter-spacing: 2px;
+  }
+  .features {
+    display: flex; gap: 14px; margin-top: 36px;
+  }
+  .features span {
+    font-size: 15px; color: #5ad2ff;
+    border: 2px solid #2a4f7a; padding: 8px 16px;
+    background: rgba(90,210,255,0.05);
+  }
+  .url {
+    position: absolute; bottom: 28px; left: 0; right: 0;
+    text-align: center; font-size: 18px; color: rgba(244,244,248,0.5);
+    letter-spacing: 3px;
+  }
+</style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="floor"></div>
+  <div class="badge">▶ INSERT COIN</div>
+  <div class="title">DCORIC<span class="dot">.</span>DEV</div>
+  <div class="arcade">A R C A D E</div>
+  <div class="tagline">A gamified portfolio you can actually play</div>
+  <div class="role">Denis Ćorić — Full-Stack Engineer @ G-Research</div>
+  <div class="features">
+    <span>🕹️ EXPLORE THE WORLD</span>
+    <span>📜 UNLOCK QUESTS</span>
+    <span>🏆 EARN ACHIEVEMENTS</span>
+  </div>
+  <div class="url">dcoric.dev</div>
+<script>
+  var s = document.getElementById('stars');
+  for (var i = 0; i < 70; i++) {
+    var d = document.createElement('div');
+    d.style.left = (Math.random()*1200) + 'px';
+    d.style.top = (Math.random()*400) + 'px';
+    d.style.opacity = 0.3 + Math.random()*0.6;
+    var sz = Math.random() > 0.7 ? 4 : 2;
+    d.style.width = sz + 'px'; d.style.height = sz + 'px';
+    s.appendChild(d);
+  }
+</script>
+</body>
+</html>
