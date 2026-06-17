@@ -1,80 +1,65 @@
-# dcoric.dev — ARCADE
+# Denis Ćorić
 
-A gamified, retro-arcade version of Denis Ćorić's portfolio/business profile.
-Instead of a static site, visitors explore a top-down pixel world, walk into
-buildings to read about Denis, inspect a skill tree, accept "quests" (projects),
-visit open-source guilds, collect trophies, and hunt a hidden treasure chest.
+Full-stack engineer building resilient web and cloud products with TypeScript, React, and thoughtful developer experience. I currently craft open-source tooling at **G-Research OSS**, partner with product teams across Europe, and occasionally swap the keyboard for a 7-iron or Blender session.
 
-Built with **vanilla HTML/CSS/JS + Canvas + Web Audio** — no frameworks, no build
-step, no external assets. All sound is synthesized at runtime and all sprites are
-drawn from code.
+## Snapshot
+- 🌍 Based in Belgrade, collaborating remotely across EU/UK time zones
+- 🧠 10+ years of experience spanning frontend platforms, API design, and DevOps automation
+- 🧑‍🤝‍🧑 Leadership focus on mentoring, design systems, testing strategies, and observability culture
+- 📬 Always open to OSS collaborations, DX initiatives, and data-heavy product work
 
-## Run it
+## What I'm focused on
+1. **Frontend platforms** – Next.js/React architectures, performance budgets, data visualisation, design systems, Storybook-driven handoffs.  
+2. **Backend & data** – Event-driven Node.js services, GraphQL/REST APIs, PostgreSQL, Redis, serverless runtimes, and security-first workflows.  
+3. **DevEx & platform enablement** – CI/CD, policy automation, traceability, and the tooling that helps teams ship faster without sacrificing quality.
 
-It's static. Any of these work:
+## Live metrics
+<p align="center">
+  <img
+    src="https://github-readme-stats.vercel.app/api?username=dcoric&show_icons=true&rank_icon=github&theme=transparent&hide_title=true&hide_border=true"
+    alt="Denis Ćorić GitHub stats"
+  />
+</p>
+<p align="center">
+  <img
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=dcoric&layout=compact&theme=transparent&hide_title=true&hide_border=true&langs_count=6"
+    alt="Top languages chart"
+  />
+  <img
+    src="https://streak-stats.demolab.com?user=dcoric&theme=transparent&hide_border=true"
+    alt="GitHub contribution streak"
+  />
+</p>
 
-```bash
-# Option A: Python
-python3 -m http.server 8000
-# open http://localhost:8000
+<p align="center">
+  <sub>Powered by <a href="https://github.com/anuraghazra/github-readme-stats">github-readme-stats</a> & related open dashboards.</sub>
+</p>
 
-# Option B: Node
-npx serve .
+## Toolbox
 
-# Option C: just double-click index.html
-```
+| Frontend | Backend & Data | Platform & Ops |
+| --- | --- | --- |
+| React, Next.js, Remix | Node.js, TypeScript, Python, Java | AWS, Docker, Kubernetes |
+| Tailwind, Styled Components, CSS/Sass | GraphQL, REST, gRPC | Terraform, GitHub Actions, Argo |
+| Storybook, Testing Library, Jest | PostgreSQL, MongoDB, Redis | Observability (Grafana, Tempo), OpenTelemetry |
 
-(Double-clicking works because it uses plain `<script>` tags, not ES modules.)
+## Selected projects
+- [`git-proxy`](https://github.com/finos/git-proxy) – FINOS compliance layer that enforces push policies between developers and Git remotes; ideal for regulated industries (core contributor).
+- [`grafana-incremental-trace-viewer`](https://github.com/G-Research/grafana-incremental-trace-viewer) – Grafana plugin enabling incremental navigation through massive Tempo traces, built with TypeScript + Tailwind (G-Research OSS).
+- [`redstone`](https://github.com/dcoric/redstone) – Knowledge management application offering markdown file storage with seamless web and mobile synchronization for cross-platform note-taking.
+- [`ip-geolocation`](https://github.com/dcoric/ip-geolocation) – Drop-in GeoIP enrichment service combining Cloudflare headers, MaxMind fallbacks, and resilient caching strategies for edge workloads.
+- [`news-feed`](https://github.com/dcoric/news-feed) – Aggregates breaking news headlines and search capabilities across curated sources via a clean REST API.
+- [`sentry-teams-webhook`](https://github.com/dcoric/sentry-teams-webhook) – Converts Sentry alerts into actionable Microsoft Teams notifications for streamlined incident response.
+- [`yunikorn-web`](https://github.com/apache/yunikorn-web) – Modernized Apache YuniKorn's cluster scheduler UI with performant React components and improved accessibility.
+- [`yunikorn-history-server`](https://github.com/dcoric/yunikorn-history-server) – Historical data service for K8s clusters using YuniKorn scheduler, built with Go.
 
-## Controls
+## Outside of code
+- Write about engineering craft and product strategy at [dcoric.dev](https://dcoric.dev)
+- Speak and mentor on TypeScript ergonomics, observability-first delivery, and OSS governance
+- Hobbies: golf, experimental 3D modelling, and keeping Grafana dashboards aesthetically pleasing
 
-| Action         | Keys                |
-|----------------|---------------------|
-| Move           | Arrow keys / WASD   |
-| Interact / OK  | Space / Enter       |
-| Close panel    | Esc                 |
-| Toggle music   | M                   |
-
-On-screen D-pad + action button are available for touch devices.
-
-## What to do
-
-- **PRESS START** on the title screen.
-- Walk into the 6 buildings:
-  - **Home** → About / bio / stats
-  - **Armory** → Skill tree (TypeScript, React, AWS, …)
-  - **Quest Board** → Projects (ReportPilot, Git Proxy, Redstone, …)
-  - **Guild Hall** → Open-source contributions (FINOS, Apache, Spotify, G-Research)
-  - **Trophy Hall** → GitHub + in-game achievements
-  - **Mailbox** → Contact links
-- Find the **hidden treasure chest** in the far corner of the map.
-- Try the **Konami code** (↑↑↓↓←→←→ B A).
-- Read the **welcome sign** in the plaza (walk up to it, press Space).
-
-## Achievements
-
-GitHub badges (Pull Shark x3, Pair Extraordinaire x2, YOLO, Quickdraw) plus
-in-game ones: Cartographer, Scholar, Armorer, Guildmaster, Connected, and a
-hidden Konami trophy.
-
-## Files
-
-```
-index.html          # structure + overlays
-css/style.css       # retro pixel UI, CRT effect, panels
-js/data.js          # all profile content (from dcoric.dev + github.com/dcoric)
-js/audio.js         # chiptune + SFX engine (Web Audio, no assets)
-js/sprites.js       # 16x16 pixel sprite definitions + renderer
-js/world.js         # procedural tile map, buildings, collision, doors, camera
-js/game.js          # main engine: loop, input, movement, panels, HUD, achievements
-```
-
-## Tech notes
-
-- Canvas internal resolution: 896×576 (28×18 tiles × 32px), CSS-scaled & pixelated.
-- Grid-based RPG movement with smooth interpolation and 2-frame walk animation.
-- Camera follows the player, clamped to a 40×30 map.
-- Minimap renders explored buildings + player position.
-- CRT overlay via CSS scanlines + vignette + subtle flicker.
-
-© Denis Ćorić — Belgrade, Serbia
+## Connect
+- 🌐 Portfolio: [dcoric.dev](https://dcoric.dev)
+- 💻 GitHub: [@dcoric](https://github.com/dcoric)
+- 💼 LinkedIn: [coricdenis](https://www.linkedin.com/in/coricdenis)
+- 🐦 X / Twitter: [@_dcoric_](https://x.com/_dcoric_)
