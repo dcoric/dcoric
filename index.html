@@ -1,360 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Denis Ćorić · Full-Stack Engineer</title>
-  <meta name="description"
-    content="Portfolio of Denis Ćorić, a full-stack engineer crafting production-grade web and cloud solutions with React, Next.js, and TypeScript." />
-  <meta name="author" content="Denis Ćorić" />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://dcoric.dev" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Denis Ćorić · Full-Stack Engineer" />
-  <meta property="og:description"
-    content="Portfolio of Denis Ćorić, a full-stack engineer crafting production-grade web and cloud solutions with React, Next.js, and TypeScript." />
-  <meta property="og:url" content="https://dcoric.dev" />
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/5342224?v=4" />
-  <meta property="og:site_name" content="dcoric.dev" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Denis Ćorić · Full-Stack Engineer" />
-  <meta name="twitter:description"
-    content="Portfolio of Denis Ćorić, a full-stack engineer crafting production-grade web and cloud solutions with React, Next.js, and TypeScript." />
-  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/5342224?v=4" />
-  <meta name="twitter:creator" content="@_dcoric_" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>DCORIC.DEV — Arcade</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230d0d12'/%3E%3Crect x='3' y='3' width='10' height='10' rx='2' fill='%23ffd166'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23b8860b'/%3E%3Crect x='7' y='6' width='2' height='4' fill='%23ffd166'/%3E%3C/svg%3E" />
+<meta name="description" content="A gamified portfolio for Denis Ćorić — Full-Stack Engineer. Walk the world, explore quests, unlock achievements." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-  <div class="page">
-    <header class="hero" id="top">
-      <nav class="nav">
-        <a class="nav__logo" href="#top">dcoric.dev</a>
-        <div class="nav__actions">
-          <div class="nav__links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="theme-controls">
-            <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-              <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
-              <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
-            </button>
-            <div class="theme-selector">
-              <button type="button" data-theme="light" title="Light theme" aria-label="Use light theme">
-                ☀️
-              </button>
-              <button type="button" data-theme="dark" title="Dark theme" aria-label="Use dark theme">
-                🌙
-              </button>
-              <button type="button" data-theme="pride" title="Pride (light) theme" aria-label="Use pride light theme">
-                🏳️‍🌈
-              </button>
-              <button type="button" data-theme="pride-dark" title="Pride (dark) theme" aria-label="Use pride dark theme">
-                🌙🏳️‍🌈
-              </button>
-            </div>
+<div id="frame">
+  <div id="screen">
+    <canvas id="game"></canvas>
+
+    <!-- CRT overlay -->
+    <div id="crt"></div>
+
+    <!-- Boot / title overlay -->
+    <div id="boot">
+      <div class="boot-inner">
+        <div class="boot-coin">INSERT COIN ▸ <span>0</span></div>
+        <h1 class="boot-title">DCORIC<span class="dot">.</span>DEV</h1>
+        <div class="boot-arcade">A R C A D E</div>
+        <div class="boot-sub">Denis Ćorić — Full-Stack Engineer</div>
+        <div class="boot-avatars">
+          <img class="boot-avatar" src="https://avatars.githubusercontent.com/u/5342224?v=4" alt="Denis Ćorić" />
+        </div>
+        <button id="boot-start" class="boot-start">▶ PRESS START</button>
+        <div class="boot-controls">
+          <span>ARROWS / WASD = MOVE</span>
+          <span>SPACE / ENTER = INTERACT</span>
+          <span>M = MUSIC</span>
+          <span>ESC = CLOSE</span>
+        </div>
+        <div class="boot-hint">Walk into buildings to explore. Find the hidden treasure!</div>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <div class="hud-id">
+          <img id="hud-avatar" src="https://avatars.githubusercontent.com/u/5342224?v=4" alt="avatar" />
+          <div class="hud-id-text">
+            <div id="hud-name">—</div>
+            <div id="hud-title">—</div>
+            <div id="hud-level">LV 1</div>
           </div>
         </div>
-      </nav>
-      <div class="hero__content">
-        <div class="hero__text">
-          <p class="eyebrow">Full-stack developer · Belgrade, Serbia</p>
-          <h1>Shipping resilient products with craftsmanship and curiosity.</h1>
-          <p class="hero__summary">
-            I'm Denis Ćorić, a senior engineer at <strong>G-Research</strong> focused on
-            building reliable trading and data platforms. A decade of experience across
-            JavaScript, TypeScript, Python, Java, and cloud-native stacks helps me lead
-            projects end-to-end—from product discovery to production observability.
-          </p>
-          <div class="hero__cta">
-            <a class="button button--primary" href="#projects">Explore work</a>
-            <a class="button button--ghost" href="https://github.com/dcoric" target="_blank" rel="noopener noreferrer">
-              GitHub Profile
-            </a>
-          </div>
-          <dl class="hero__stats">
-            <div>
-              <dt>Repositories</dt>
-              <dd>50 public</dd>
-            </div>
-            <div>
-              <dt>Open source contributions</dt>
-              <dd>React ecosystem · Apache YuniKorn</dd>
-            </div>
-            <div>
-              <dt>Community</dt>
-              <dd>4 followers · @_dcoric_</dd>
-            </div>
-          </dl>
+        <div class="hud-xp">
+          <div class="hud-xp-bar"><div id="xp-fill"></div></div>
+          <div id="xp-val">0 XP</div>
         </div>
-        <div class="hero__portrait">
-          <div class="portrait__glow"></div>
-          <img src="https://avatars.githubusercontent.com/u/5342224?v=4" alt="Portrait of Denis Ćorić" />
+        <div class="hud-meta">
+          <div class="hud-stat"><span class="ic">🪙</span><span id="hud-coins">0</span></div>
+          <div class="hud-stat"><span class="ic">🏆</span><span id="hud-ach">0/0</span></div>
+        </div>
+        <div class="hud-btns">
+          <button id="btn-music" title="toggle music">♪ OFF</button>
+          <button id="btn-help" title="help">?</button>
         </div>
       </div>
-    </header>
 
-    <main>
-      <section class="section about" id="about">
-        <div class="section__intro">
-          <p class="eyebrow">About</p>
-          <h2>Engineering partner for product teams.</h2>
-        </div>
-        <div class="about__grid">
-          <p>
-            My craft sits at the intersection of product thinking and technical
-            leadership. Whether it's architecting React/Next.js frontends, scaling Node.js
-            services, or automation pipelines for cloud infrastructure, I aim to shorten
-            the loop between idea and measurable value.
-          </p>
-          <p>
-            I care deeply about developer experience and code quality. Recent work
-            includes leading greenfield initiatives, elevating design systems, and
-            mentoring teams on modern TypeScript patterns, testing, and observability
-            practices.
-          </p>
-          <ul class="about__highlights">
-            <li><strong>Role:</strong> Senior Full-stack Engineer at G-Research</li>
-            <li><strong>Experience:</strong> 10+ years shipping production software</li>
-            <li><strong>Focus:</strong> Frontend platforms, API design, DevOps automation</li>
-            <li><strong>Community:</strong> Blogging at <a href="https://dcoric.dev" target="_blank"
-                rel="noopener noreferrer">dcoric.dev</a></li>
-          </ul>
-        </div>
-      </section>
+      <canvas id="minimap" width="120" height="90"></canvas>
 
-      <section class="section skills" id="skills">
-        <div class="section__intro">
-          <p class="eyebrow">Capabilities</p>
-          <h2>Full-stack toolkit built for product velocity.</h2>
-        </div>
-        <div class="skill-groups">
-          <div class="skill-card">
-            <h3>Frontend leadership</h3>
-            <p>Design systems, data visualisation, and performance budgets for enterprise web apps.</p>
-            <div class="skill-tags">
-              <span>React</span>
-              <span>Next.js</span>
-              <span>TypeScript</span>
-              <span>Tailwind</span>
-              <span>Storybook</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <h3>Backend & Cloud</h3>
-            <p>Event-driven services, authentication flows, and resilient serverless architectures.</p>
-            <div class="skill-tags">
-              <span>Node.js</span>
-              <span>Python</span>
-              <span>Django</span>
-              <span>PostgreSQL</span>
-              <span>GraphQL</span>
-              <span>AWS</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <h3>Engineering culture</h3>
-            <p>Mentorship, code review, testing strategy, and delivery workflows that scale teams.</p>
-            <div class="skill-tags">
-              <span>CI/CD</span>
-              <span>Testing</span>
-              <span>Observability</span>
-              <span>Agile Leadership</span>
-              <span>Product Discovery</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div id="location-label" class="hidden"></div>
 
-      <section class="section projects" id="projects">
-        <div class="section__intro">
-          <p class="eyebrow">Selected Work</p>
-          <h2>Hands-on case studies from the GitHub backlog.</h2>
-          <p class="section__description">
-            A glimpse into open-source experiments and client-facing platforms. Each project
-            ties product outcomes to a reliable delivery workflow.
-          </p>
+      <!-- On-screen controls (touch friendly) -->
+      <div id="dpad">
+        <button id="dp-up">▲</button>
+        <div class="dp-row">
+          <button id="dp-left">◀</button>
+          <button id="dp-action">●</button>
+          <button id="dp-right">▶</button>
         </div>
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="project-card__meta">
-              <span class="project-card__tag">TypeScript · Node.js</span>
-              <span class="project-card__date">Updated Sep 2025</span>
-            </div>
-            <h3>ip-geolocation</h3>
-            <p>
-              A Node.js service that enriches requests with GeoIP data, Cloudflare headers,
-              and local MaxMind fallbacks—deployed as a drop-in API for edge workloads.
-            </p>
-            <ul>
-              <li>Improves personalization and compliance for geo-aware platforms.</li>
-              <li>Ships with observability hooks and resilient caching strategies.</li>
-            </ul>
-            <a href="https://github.com/dcoric/ip-geolocation" target="_blank" rel="noopener noreferrer">View
-              repository</a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card__meta">
-              <span class="project-card__tag">Next.js · Maps API</span>
-              <span class="project-card__date">Updated Aug 2025</span>
-            </div>
-            <h3>locationtimezone</h3>
-            <p>
-              Lightweight API that returns precise longitude, latitude, and timezone details
-              from IP addresses to power location-aware experiences.
-            </p>
-            <ul>
-              <li>Supports privacy-friendly lookups and progressive enhancement.</li>
-              <li>Used to prototype travel and logistics dashboards.</li>
-            </ul>
-            <a href="https://github.com/dcoric/locationtimezone" target="_blank" rel="noopener noreferrer">View
-              repository</a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card__meta">
-              <span class="project-card__tag">TypeScript · Apache</span>
-              <span class="project-card__date">Updated Oct 2024</span>
-            </div>
-            <h3>yunikorn-web</h3>
-            <p>
-              Contributions to Apache YuniKorn's Web UI, modernising cluster visualisations
-              and improving the developer experience for scheduling insights.
-            </p>
-            <ul>
-              <li>Rewired React components for performance and accessibility.</li>
-              <li>Collaborated upstream within the Apache foundation workflow.</li>
-            </ul>
-            <a href="https://github.com/dcoric/yunikorn-web" target="_blank" rel="noopener noreferrer">View
-              repository</a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card__meta">
-              <span class="project-card__tag">TypeScript · Grafana</span>
-              <span class="project-card__date">Updated Sep 2025</span>
-            </div>
-            <h3>grafana-incremental-trace-viewer</h3>
-            <p>
-              A Grafana plugin that provides an incremental trace viewer for efficient analysis
-              of distributed tracing data, enhancing observability workflows for complex systems.
-            </p>
-            <ul>
-              <li>Built with TypeScript and Tailwind CSS for modern UI components.</li>
-              <li>Supports both Grafana Tempo API and custom production implementations.</li>
-            </ul>
-            <a href="https://github.com/G-Research/grafana-incremental-trace-viewer" target="_blank"
-              rel="noopener noreferrer">View
-              repository</a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card__meta">
-              <span class="project-card__tag">Node.js · Security</span>
-              <span class="project-card__date">Updated Jul 2025</span>
-            </div>
-            <h3>git-proxy</h3>
-            <p>
-              A FINOS project that acts as an intermediary between developers and Git remote
-              endpoints, enforcing customizable push protections and compliance policies.
-            </p>
-            <ul>
-              <li>Essential for regulated industries requiring audit trails and policy enforcement.</li>
-              <li>Provides security controls for Git operations in enterprise environments.</li>
-            </ul>
-            <a href="https://github.com/finos/git-proxy" target="_blank" rel="noopener noreferrer">View
-              repository</a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card__meta">
-              <span class="project-card__tag">Web API · News</span>
-              <span class="project-card__date">Updated 2025</span>
-            </div>
-            <h3>news-feed</h3>
-            <p>
-              A news aggregation platform that retrieves breaking news headlines and enables
-              article search across various news sources and blogs worldwide.
-            </p>
-            <ul>
-              <li>Provides real-time access to news content from multiple sources.</li>
-              <li>Built for developers needing news data integration in their applications.</li>
-            </ul>
-            <a href="https://github.com/dcoric/news-feed" target="_blank" rel="noopener noreferrer">View
-              repository</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="section spotlight">
-        <div class="spotlight__content">
-          <p class="eyebrow">What drives me</p>
-          <h2>Balanced execution: vision, velocity, and quality.</h2>
-          <p>
-            Product work thrives when research, design, and engineering sit around the same
-            table. I bridge these disciplines—asking better questions, mapping technical
-            risks, and ensuring the release roadmap stays aligned with customer value.
-          </p>
-        </div>
-        <div class="spotlight__stats">
-          <div>
-            <span class="spotlight__value">12+</span>
-            <span class="spotlight__label">years shipping software</span>
-          </div>
-          <div>
-            <span class="spotlight__value">3</span>
-            <span class="spotlight__label">active OSS initiatives</span>
-          </div>
-          <div>
-            <span class="spotlight__value">∞</span>
-            <span class="spotlight__label">curiosity for better tooling</span>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer" id="contact">
-      <div class="footer__inner">
-        <div>
-          <p class="eyebrow">Let's collaborate</p>
-          <h2>Have a product challenge or idea worth exploring?</h2>
-          <p>
-            I'm open to consulting, advisory roles, and collaborations that demand
-            thoughtful end-to-end execution. Reach out—let's ship something meaningful.
-          </p>
-          <div class="footer__cta">
-            <a class="button button--primary" href="https://www.linkedin.com/in/coricdenis" target="_blank"
-              rel="noopener noreferrer">Start a
-              conversation</a>
-            <a class="button button--x" href="https://x.com/_dcoric_" target="_blank" rel="noopener noreferrer">
-              Say hi on <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="20" height="20"
-                aria-hidden="true">
-                <path fill="currentColor" stroke="white" stroke-width="4" stroke-linejoin="round"
-                  d="M93.5 20H110L73.5 62.5L116 120H82.5L56.5 86.5L27.5 120H11L50 74L7 20H41L64 51.5L93.5 20ZM87.5 109H97L36.5 30H26.5L87.5 109Z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="footer__links">
-          <a href="https://github.com/dcoric" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/coricdenis" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://x.com/_dcoric_" target="_blank" rel="noopener noreferrer">X.com</a>
-        </div>
+        <button id="dp-down">▼</button>
       </div>
-      <p class="footer__copy">© <span id="current-year"></span> Denis Ćorić. Crafted with care.</p>
-    </footer>
+    </div>
+
+    <!-- Content panel -->
+    <div id="panel" class="hidden">
+      <div class="panel-box">
+        <button id="panel-close" title="close (ESC)">✕</button>
+        <div id="panel-body"></div>
+      </div>
+    </div>
+
+    <!-- In-world dialog -->
+    <div id="dialog" class="hidden">
+      <div class="dialog-box">
+        <button id="dialog-close" title="close">✕</button>
+        <div class="dialog-title"></div>
+        <div class="dialog-body"></div>
+        <div class="dialog-hint">▶ SPACE / ENTER to continue</div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="hidden"></div>
   </div>
 
-  <script src="script.js"></script>
-</body>
+  <div id="footer">
+    <span>© Denis Ćorić</span>
+    <span class="sep">·</span>
+    <a href="https://dcoric.dev" target="_blank" rel="noopener">dcoric.dev</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/dcoric" target="_blank" rel="noopener">github</a>
+    <span class="sep">·</span>
+    <span>Belgrade, Serbia</span>
+  </div>
+</div>
 
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/world.js"></script>
+<script src="js/game.js"></script>
+<script>
+  window.addEventListener("load", function () {
+    GAME.init();
+    var startBtn = document.getElementById("boot-start");
+    startBtn.addEventListener("click", function () { GAME.start(); });
+    // Allow tapping the boot screen to start on mobile
+    document.getElementById("boot").addEventListener("click", function (e) {
+      if (e.target.tagName !== "BUTTON") GAME.start();
+    });
+  });
+</script>
+</body>
 </html>
