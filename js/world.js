@@ -3,8 +3,16 @@ window.WORLD = (function () {
   const TILE = 32;
   const MAP_W = 40;
   const MAP_H = 30;
-  const VIEW_W = 28; // tiles visible horizontally
-  const VIEW_H = 18; // tiles visible vertically
+  let VIEW_W = 28; // tiles visible horizontally
+  let VIEW_H = 18; // tiles visible vertically
+
+  // Adapt the visible viewport to the screen (e.g. portrait phones show a
+  // taller, narrower slice so the canvas aspect matches the display and the
+  // player never scrolls into a clipped/off-screen region).
+  function setView(w, h) {
+    VIEW_W = Math.max(1, Math.min(w, MAP_W));
+    VIEW_H = Math.max(1, Math.min(h, MAP_H));
+  }
 
   // Terrain codes
   const GRASS = ".", PATH = ",", TREE = "T", WATER = "W",
@@ -295,6 +303,6 @@ window.WORLD = (function () {
     TILE, MAP_W, MAP_H, VIEW_W, VIEW_H,
     GRASS, PATH, TREE, WATER, FLOWER, ROCK, CHEST, SIGN, BRIDGE,
     build, grid, buildings, decor,
-    isSolidAt, buildingAt, doorAt, camera, cameraPx, startTile,
+    isSolidAt, buildingAt, doorAt, camera, cameraPx, startTile, setView,
   };
 })();

@@ -8,6 +8,11 @@ window.GAME = (function () {
 
   const TILE = WORLD.TILE;
 
+  // Visible tile viewport (mirrors WORLD's; kept here so renderWorld and the
+  // canvas backing store stay in sync with the camera after orientation changes)
+  let viewW = 28;
+  let viewH = 18;
+
   // Player
   const player = {
     tileX: 20, tileY: 15,
@@ -51,8 +56,9 @@ window.GAME = (function () {
   function init() {
     canvas = document.getElementById("game");
     ctx = canvas.getContext("2d");
-    canvas.width = WORLD.VIEW_W * TILE;
-    canvas.height = WORLD.VIEW_H * TILE;
+    applyViewport();
+    canvas.width = viewW * TILE;
+    canvas.height = viewH * TILE;
     ctx.imageSmoothingEnabled = false;
 
     WORLD.build();
@@ -65,8 +71,35 @@ window.GAME = (function () {
     bindHud();
     renderBoot();
 
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+
     lastTime = performance.now();
     raf = requestAnimationFrame(loop);
+  }
+
+  // Pick a viewport whose aspect matches the screen so the canvas never
+  // overflows the #screen container (which caused the player to scroll off
+  // the left/right edges on portrait phones).
+  function applyViewport() {
+    const portrait = window.matchMedia &&
+      window.matchMedia("(max-width: 700px) and (orientation: portrait)").matches;
+    if (portrait) {
+      // 14 x 25 tiles -> 448 x 800 px (~9:16), matches the portrait #screen
+      viewW = 14;
+      viewH = 25;
+    } else {
+      viewW = 28;
+      viewH = 18;
+    }
+    WORLD.setView(viewW, viewH);
+  }
+
+  function onResize() {
+    applyViewport();
+    canvas.width = viewW * TILE;
+    canvas.height = viewH * TILE;
+    ctx.imageSmoothingEnabled = false;
   }
 
   // ---- Main loop ----
@@ -231,8 +264,8 @@ window.GAME = (function () {
     // Visible tile range (+1 to cover sub-pixel edges).
     const startX = Math.floor(cam.x / TILE);
     const startY = Math.floor(cam.y / TILE);
-    const endX = startX + WORLD.VIEW_W + 1;
-    const endY = startY + WORLD.VIEW_H + 1;
+    const endX = startX + viewW + 1;
+    const endY = startY + viewH + 1;
 
     // Terrain
     for (let y = startY; y < endY; y++) {
