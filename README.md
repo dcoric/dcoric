@@ -50,8 +50,8 @@ Full-stack engineer building resilient web and cloud products with TypeScript, R
 - [`ip-geolocation`](https://github.com/dcoric/ip-geolocation) – Drop-in GeoIP enrichment service combining Cloudflare headers, MaxMind fallbacks, and resilient caching strategies for edge workloads.
 - [`news-feed`](https://github.com/dcoric/news-feed) – Aggregates breaking news headlines and search capabilities across curated sources via a clean REST API.
 - [`sentry-teams-webhook`](https://github.com/dcoric/sentry-teams-webhook) – Converts Sentry alerts into actionable Microsoft Teams notifications for streamlined incident response.
-- [`yunikorn-web`](https://github.com/apache/yunikorn-web) – Modernized Apache YuniKorn's cluster scheduler UI with performant React components and improved accessibility (early OSS contribution).
-- [`yunikorn-history-server`](https://github.com/dcoric/yunikorn-history-server) – Historical data service for K8s clusters using YuniKorn scheduler, built with Go (my first open-source project).
+- [`yunikorn-web`](https://github.com/apache/yunikorn-web) – Modernized Apache YuniKorn's cluster scheduler UI with performant React components and improved accessibility.
+- [`yunikorn-history-server`](https://github.com/dcoric/yunikorn-history-server) – Historical data service for K8s clusters using YuniKorn scheduler, built with Go.
 
 ## Outside of code
 - Write about engineering craft and product strategy at [dcoric.dev](https://dcoric.dev)

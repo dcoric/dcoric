@@ -180,6 +180,129 @@
   --color-link-underline: rgba(20, 184, 166, 0.6);
 }
 
+/* LGBT Pride theme */
+:root[data-theme="pride"] {
+  color-scheme: light;
+  /* Rainbow gradient background */
+  --background-body: repeating-linear-gradient(
+    90deg,
+    #EA232A 0%,
+    #EA232A 16.6%  ,
+    #FF7A1C 16.6%,
+    #FF7A1C 33.3%,
+    #FFDD45 33.3%,
+    #FFDD45 50%,
+    #009E49 50%,
+    #009E49 66.6%,
+    #0057B8 66.6%,
+    #0057B8 83.3%,
+    #752488 83.3%,
+    #752488 100%
+  );
+  --color-surface: rgba(255, 255, 255, 0.92);
+  --color-surface-strong: rgba(255, 255, 255, 0.96);
+  --color-primary: #EA232A;
+  --color-primary-soft: rgba(234, 35, 42, 0.15);
+  --color-primary-tint: rgba(234, 35, 42, 0.1);
+  --color-primary-border-soft: rgba(234, 35, 42, 0.25);
+  --color-primary-border-strong: rgba(234, 35, 42, 0.4);
+  /* Rainbow accent colors */
+  --color-accent: #FF7A1C;
+  --color-accent-hover: #FFDD45;
+  --color-link-underline: rgba(0, 87, 184, 0.6);
+  --color-text: #0b1120;
+  --color-text-muted: rgba(15, 23, 42, 0.7);
+  --color-text-subtle: rgba(51, 65, 85, 0.9);
+  --color-text-meta: rgba(71, 85, 105, 0.75);
+  --color-text-tertiary: rgba(71, 85, 105, 0.65);
+  --color-bg: #ffffff;
+  --color-border: rgba(148, 163, 184, 0.4);
+  --color-border-soft: rgba(148, 163, 184, 0.35);
+  --color-border-strong: rgba(100, 116, 139, 0.6);
+  --color-footer-border: rgba(148, 163, 184, 0.4);
+  --color-spotlight-border: rgba(117, 36, 136, 0.3);
+  --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.1);
+  --shadow-lifted: 0 24px 40px rgba(15, 23, 42, 0.1);
+  --shadow-strong: 0 30px 60px rgba(15, 23, 42, 0.15);
+  --shadow-card-hover: 0 24px 50px rgba(0, 87, 184, 0.25);
+  --color-ghost-bg: rgba(255, 255, 255, 0.7);
+  --color-ghost-bg-hover: rgba(0, 87, 184, 0.12);
+  --color-hero-stats-bg: rgba(255, 255, 255, 0.88);
+  --color-highlight-bg: rgba(255, 255, 255, 0.88);
+  --color-portrait-border: rgba(117, 36, 136, 0.4);
+  --color-portrait-shadow: 0 30px 60px rgba(117, 36, 136, 0.25);
+  --background-portrait-glow: radial-gradient(circle, rgba(117, 36, 136, 0.2), transparent 65%);
+  --background-spotlight: linear-gradient(135deg, rgba(234, 35, 42, 0.1), rgba(0, 87, 184, 0.1));
+  --color-footer-bg: rgba(255, 255, 255, 0.96);
+  --color-footer-text: rgba(51, 65, 85, 0.85);
+  --color-footer-copy: rgba(71, 85, 105, 0.7);
+  --color-x-button-bg: #000000;
+  --color-x-button-hover-bg: #222222;
+  --color-x-button-text: #ffffff;
+}
+
+/* Pride dark mode variant */
+:root[data-theme="pride-dark"] {
+  color-scheme: dark;
+  /* Subtle rainbow gradient overlay on dark background */
+  --background-body:
+    linear-gradient(
+      to right,
+      rgba(234, 35, 42, 0.15) 0%,
+      rgba(234, 35, 42, 0.15) 16.6%,
+      rgba(255, 122, 28, 0.15) 16.6%,
+      rgba(255, 122, 28, 0.15) 33.3%,
+      rgba(255, 221, 69, 0.15) 33.3%,
+      rgba(255, 221, 69, 0.15) 50%,
+      rgba(0, 158, 73, 0.15) 50%,
+      rgba(0, 158, 73, 0.15) 66.6%,
+      rgba(0, 87, 184, 0.15) 66.6%,
+      rgba(0, 87, 184, 0.15) 83.3%,
+      rgba(117, 36, 136, 0.15) 83.3%,
+      rgba(117, 36, 136, 0.15) 100%
+    ),
+    #0a0a12;
+  --color-surface: rgba(17, 17, 31, 0.88);
+  --color-surface-strong: rgba(28, 29, 50, 0.94);
+  --color-primary: #EA232A;
+  --color-primary-soft: rgba(234, 35, 42, 0.25);
+  --color-primary-tint: rgba(234, 35, 42, 0.18);
+  --color-primary-border-soft: rgba(234, 35, 42, 0.4);
+  --color-primary-border-strong: rgba(234, 35, 42, 0.6);
+  --color-accent: #FF7A1C;
+  --color-accent-hover: #FFDD45;
+  --color-link-underline: rgba(0, 87, 184, 0.7);
+  --color-text: #f8fafc;
+  --color-text-muted: rgba(226, 232, 240, 0.78);
+  --color-text-subtle: rgba(148, 163, 184, 0.85);
+  --color-text-meta: rgba(148, 163, 184, 0.75);
+  --color-text-tertiary: rgba(148, 163, 184, 0.6);
+  --color-bg: #0a0a12;
+  --color-border: rgba(148, 163, 184, 0.35);
+  --color-border-soft: rgba(148, 163, 184, 0.4);
+  --color-border-strong: rgba(148, 163, 184, 0.65);
+  --color-footer-border: rgba(117, 36, 136, 0.3);
+  --color-spotlight-border: rgba(117, 36, 136, 0.35);
+  --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.5);
+  --shadow-lifted: 0 24px 40px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 30px 60px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 24px 50px rgba(0, 87, 184, 0.4);
+  --color-ghost-bg: rgba(15, 23, 42, 0.5);
+  --color-ghost-bg-hover: rgba(148, 163, 184, 0.18);
+  --color-hero-stats-bg: rgba(15, 23, 42, 0.6);
+  --color-highlight-bg: rgba(15, 23, 42, 0.65);
+  --color-portrait-border: rgba(117, 36, 136, 0.6);
+  --color-portrait-shadow: 0 30px 60px rgba(117, 36, 136, 0.4);
+  --background-portrait-glow: radial-gradient(circle, rgba(117, 36, 136, 0.35), transparent 65%);
+  --background-spotlight: linear-gradient(135deg, rgba(234, 35, 42, 0.2), rgba(0, 87, 184, 0.18));
+  --color-footer-bg: rgba(8, 8, 16, 0.98);
+  --color-footer-text: rgba(148, 163, 184, 0.85);
+  --color-footer-copy: rgba(148, 163, 184, 0.6);
+  --color-x-button-bg: #ffffff;
+  --color-x-button-hover-bg: #e2e8f0;
+  --color-x-button-text: #0f172a;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -241,6 +364,49 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-selector {
+  display: none;
+  gap: 8px;
+  padding-left: 16px;
+  border-left: 1px solid var(--color-border);
+}
+
+.has-js .theme-selector {
+  display: flex;
+}
+
+.theme-selector button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-selector button:hover {
+  transform: scale(1.1);
+  background: var(--color-ghost-bg-hover);
+}
+
+.theme-selector button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+
+.theme-selector button.active-theme {
+  transform: scale(1.15);
+  background: var(--color-primary-tint);
+  border-radius: 50%;
 }
 
 .nav__logo {

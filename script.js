@@ -9,7 +9,10 @@
 
   const storageKey = "dcoric.dev:theme";
   const themeToggle = document.querySelector(".theme-toggle");
+  const themeSelector = document.querySelector(".theme-selector");
   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const validThemes = ["light", "dark", "pride", "pride-dark"];
 
   const storage = {
     get(key) {
@@ -30,12 +33,12 @@
 
   const getStoredPreference = () => {
     const stored = storage.get(storageKey);
-    return stored === "light" || stored === "dark" ? stored : null;
+    return validThemes.includes(stored) ? stored : null;
   };
 
   const updateToggle = (theme, isManual) => {
     if (!themeToggle) return;
-    const isDark = theme === "dark";
+    const isDark = theme === "dark" || theme === "pride-dark";
     const nextTheme = isDark ? "light" : "dark";
     const label = `Switch to ${nextTheme} theme`;
     themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
@@ -44,26 +47,50 @@
     themeToggle.setAttribute("title", `${label}${suffix}`);
   };
 
+  const updateThemeSelector = (theme) => {
+    if (!themeSelector) return;
+    const buttons = themeSelector.querySelectorAll("button[data-theme]");
+    buttons.forEach((btn) => {
+      btn.classList.toggle("active-theme", btn.dataset.theme === theme);
+    });
+  };
+
   let storedPreference = getStoredPreference();
 
   const applyTheme = (theme, { persist = false } = {}) => {
-    const normalized = theme === "dark" ? "dark" : "light";
-    doc.dataset.theme = normalized;
-    const isManual = persist || storedPreference !== null;
-    updateToggle(normalized, isManual);
+    if (!validThemes.includes(theme)) {
+      console.warn(`Invalid theme: ${theme}`);
+      return;
+    }
+    doc.dataset.theme = theme;
+    updateToggle(theme, true);
+    updateThemeSelector(theme);
     if (persist) {
-      storage.set(storageKey, normalized);
-      storedPreference = normalized;
+      storage.set(storageKey, theme);
+      storedPreference = theme;
     }
   };
 
   const initialTheme = storedPreference ?? (prefersDarkScheme.matches ? "dark" : "light");
   applyTheme(initialTheme, { persist: false });
 
+  // Toggle button - cycles through themes in order
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-      const nextTheme = doc.dataset.theme === "dark" ? "light" : "dark";
-      applyTheme(nextTheme, { persist: true });
+      const currentTheme = doc.dataset.theme;
+      const currentIndex = validThemes.indexOf(currentTheme);
+      const nextIndex = (currentIndex + 1) % validThemes.length;
+      applyTheme(validThemes[nextIndex], { persist: true });
+    });
+  }
+
+  // Theme selector buttons - direct selection
+  if (themeSelector) {
+    themeSelector.addEventListener("click", (e) => {
+      const button = e.target.closest('button[data-theme]');
+      if (button) {
+        applyTheme(button.dataset.theme, { persist: true });
+      }
     });
   }
 

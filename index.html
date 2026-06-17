@@ -42,10 +42,26 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
           </div>
-          <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
-            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
-          </button>
+          <div class="theme-controls">
+            <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+              <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+              <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+            </button>
+            <div class="theme-selector">
+              <button type="button" data-theme="light" title="Light theme" aria-label="Use light theme">
+                ☀️
+              </button>
+              <button type="button" data-theme="dark" title="Dark theme" aria-label="Use dark theme">
+                🌙
+              </button>
+              <button type="button" data-theme="pride" title="Pride (light) theme" aria-label="Use pride light theme">
+                🏳️‍🌈
+              </button>
+              <button type="button" data-theme="pride-dark" title="Pride (dark) theme" aria-label="Use pride dark theme">
+                🌙🏳️‍🌈
+              </button>
+            </div>
+          </div>
         </div>
       </nav>
       <div class="hero__content">
